@@ -1,0 +1,158 @@
+.custom-bg {
+    background: url('../assets/fondo.jpg') center/cover no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: .3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-1px);
+    
+}
+
+.custom-button {
+    background: transparent;
+    color: #444; /* Gris oscuro para el texto */
+    border: 2px solid #666; /* Gris medio para el borde */
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Efecto hover: el botón se vuelve gris oscuro */
+.custom-button:hover {
+    background: #666;
+    color: white;
+}
+
+.custom-bg {
+    width: 100%;
+    height: 100%;
+    border-radius: .3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-1px);
+    transition: background-image 1s ease-in-out;
+}
+
+.bg-slider {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    z-index: 0;
+  }
+  
+  .bg-slider.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  thead.bg-primary {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+
+#modalConfirmacion {
+    display: none; /* Lo ocultamos por defecto */
+    position: fixed;
+    z-index: 999; /* Un z-index menor que el del modal de registro */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: none; /* Lo dejamos oculto */
+}
+
+
+.modal-contenido.moderno {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    margin: 15% auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: aparecer 0.3s ease;
+}
+
+.modal-contenido h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.modal-contenido p {
+    color: #555;
+    margin: 10px 0 20px;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-confirmar {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-confirmar:hover {
+    background-color: #d62828;
+}
+
+.btn-cancelar {
+    background-color: #adb5bd;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-cancelar:hover {
+    background-color: #6c757d;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+    .boton-flotante {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+        background-color: #4e73df;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 50px;
+        font-size: 16px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .boton-flotante:hover {
+        background-color: #2e59d9;
+    }
+
