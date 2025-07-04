@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registrar perfume para hombre</title>
+    <title>REGISTAR PERFUMES MASCULINOS</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -52,31 +52,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Usuarios
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Registros</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_Usuarios') }}">Registar Usuarios</a>
-                        
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Perfumes
+                Gestor De Perfumes
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -84,7 +60,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHombre"
                     aria-expanded="true" aria-controls="collapseHombre">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes De Hombre</span>
+                    <span>Perfumes Masculinos</span>
                 </a>
                 <div id="collapseHombre" class="collapse" aria-labelledby="headingHombre"
                     data-parent="#accordionSidebar">
@@ -100,7 +76,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMujer"
                     aria-expanded="true" aria-controls="collapseMujer">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes De Mujer</span>
+                    <span>Perfumes Femeninos</span>
                 </a>
                 <div id="collapseMujer" class="collapse" aria-labelledby="headingMujer" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -133,7 +109,7 @@
 
             <!-- Nav Item - Tables -->
             <div class="sidebar-heading">
-                Pedidos
+                Gestor De Pedidos
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -179,18 +155,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -264,7 +229,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">REGISTAR PERFUMES PARA HOMBRES</h1>
+                        <h1 class="h3 text-gray-800" style="margin-left: 50px; margin-top: 20px;">REGISTRAR PERFUMES
+                            MASCULINOS</h1>
                     </div>
 
                     @if (session('Correcto'))
@@ -300,7 +266,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar datos del perfume
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTAR DATOS DEL PERFUME
                                     </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
@@ -392,10 +358,12 @@
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary"
+                                            <button type="button" class="btn btn-danger"
                                                 data-bs-dismiss="modal">Cerrar</button>
-                                            <button type="submit" class="btn btn-primary">Registrar</button>
+                                            <button type="submit" class="btn btn-success">Registrar</button>
                                         </div>
+
+
                                     </form>
                                 </div>
                             </div>
@@ -413,9 +381,11 @@
                     @endif
 
                     <div class="p-5 table-responsive">
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalregistar">Añadir
-                            perfume</button>
-                        <table class="table table-striped table-bordered table-hover">
+                        <button class="btn btn-success" style="margin-top: -30px;" data-bs-toggle="modal"
+                            data-bs-target="#modalregistar">
+                            Añadir perfume
+                        </button>
+                        <table class="table table-striped table-bordered table-hover" style="margin-top: -8px;">
                             <thead class="bg-primary text-white">
                                 <tr>
 
@@ -550,11 +520,12 @@
 
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
-                                                                                    class="btn btn-primary"
+                                                                                    class="btn btn-danger"
                                                                                     data-bs-dismiss="modal">Cerrar</button>
                                                                                 <button type="submit"
-                                                                                    class="btn btn-primary">Modificar</button>
+                                                                                    class="btn btn-success">Modificar</button>
                                                                             </div>
+
                                             </form>
                                         </div>
                                     </div>

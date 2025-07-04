@@ -37,7 +37,8 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="{{ route('index1') }}">
                 <div class="">
                     <img src="{{ asset('assets/logo.png.png') }}" style="width: 65px; height: auto;">
                 </div>
@@ -66,8 +67,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_perfum_hombre') }}">Registrar Perfume</a>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_H') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_H_User') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -81,8 +81,7 @@
                 <div id="collapseMujer" class="collapse" aria-labelledby="headingMujer" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_perfum_mujer') }}">Registrar Perfume</a>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_M') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_M_User') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -97,8 +96,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_perfum_unisex') }}">Registrar Perfume</a>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_U') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_U_User') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -123,8 +121,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_Pedido') }}">Registar Pedido</a>
-                        <a class="collapse-item" href="{{ route('Ver_Pedido') }}">Ver Pedidos</a>
+                        <a class="collapse-item" href="{{ route('Registrar_Pedido_User') }}">Registar Pedido</a>
+                        <a class="collapse-item" href="{{ route('Ver_Pedido_User') }}">Ver Pedidos</a>
                     </div>
                 </div>
             </li>
@@ -332,9 +330,8 @@
                 </div>
 
                 <div class="p-5 table-responsive">
-
-                    <table class="table table-striped table-bordered table-hover" style="margin-top: -20px;">
-
+                    
+                     <table class="table table-striped table-bordered table-hover" style="margin-top: -20px;">
                         <thead class="bg-primary text-white">
                             <tr>
 
@@ -345,7 +342,7 @@
                                 <th scope="col">FRASCO EN ML</th>
                                 <th scope="col">FECHA</th>
                                 <th scope="col">HORA</th>
-                                <th></th>
+                                
 
                         <tbody class="table-group-divider">
                             @foreach ($datos as $key => $item)
@@ -358,111 +355,6 @@
                                     <td>{{ $item->frasco_ml }}</td>
                                     <td>{{ $item->fecha }}</td>
                                     <td>{{ $item->hora }}</td>
-                                    <td>
-
-                                        <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#modalFechaCantidad" data-id="{{ $item->id }}"
-                                            data-fecha="{{ $item->fecha }}">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </a>
-
-                                        <a href="" data-bs-toggle="modal"
-                                            data-bs-target="#modaleditar{{ $item->id }}"
-                                            class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"
-                                                style="color: #000000;"></i></a>
-
-                                        <!-- Botón de eliminar -->
-                                        <a href="{{ route('crud.delete', $item->id) }}" class="btn btn-danger btn-sm"
-                                            onclick="mostrarModal(this); return false;">
-                                            <i class="fa-solid fa-delete-left" style="color: #000000;"></i>
-                                        </a>
-
-
-
-                                        <div id="modalConfirmacion" class="modal">
-                                            <div class="modal-contenido moderno">
-                                                <h3>¿Estás seguro?</h3>
-                                                <p>Esta acción eliminará el producto permanentemente.</p>
-                                                <div class="botones">
-                                                    <button class="btn-confirmar" onclick="confirmarEliminacion()">Sí,
-                                                        eliminar</button>
-                                                    <button class="btn-cancelar"
-                                                        onclick="cerrarModal()">Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal fade" id="modalFechaCantidad" tabindex="-1"
-                                            aria-labelledby="modalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalLabel">ACTUALIZAR FECHA Y CANTIDAD</h5>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <form action="{{ route('updateCantidadFecha') }}"
-                                                            method="POST">
-                                                            @csrf
-
-                                                            <input type="hidden" name="txtcodigo" id="txtcodigo">
-
-                                                            <div class="mb-3">
-                                                                <label for="txtcantidad" class="form-label">Cantidad a
-                                                                    sumar</label>
-                                                                <input type="number" class="form-control"
-                                                                    name="txtcantidad" id="txtcantidad" required>
-                                                                @error('txtcantidad')
-                                                                    <div class="text-danger small">{{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-
-                                                            <div class="mb-3">
-                                                                <label for="txtfecha" class="form-label">Fecha</label>
-                                                                <input type="date" class="form-control"
-                                                                    name="txtfecha" id="txtfecha" required>
-                                                                @error('txtfecha')
-                                                                    <div class="text-danger small">{{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger"
-                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                <button type="submit"
-                                                                    class="btn btn-success">Guardar</button>
-                                                            </div>
-
-                                                        </form>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <script>
-                                            document.addEventListener('DOMContentLoaded', () => {
-                                                var modal = document.getElementById('modalFechaCantidad');
-                                                modal.addEventListener('show.bs.modal', function(event) {
-                                                    var button = event.relatedTarget;
-                                                    var id = button.getAttribute('data-id');
-                                                    var cantidad = button.getAttribute('data-cantidad');
-                                                    var fecha = button.getAttribute('data-fecha');
-
-                                                    modal.querySelector('input[name="txtcodigo"]').value = id;
-                                                    modal.querySelector('input[name="txtcantidad"]').value = cantidad;
-                                                    modal.querySelector('input[name="txtfecha"]').value = fecha;
-                                                });
-                                            });
-                                        </script>
-
-                                    </td>
                                 </tr>
                         </tbody>
 
@@ -472,7 +364,8 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">MODIFICAR DATOS DEL PERFUME</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar datos del
+                                            perfume</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -568,12 +461,11 @@
 
                                                                         <div class="modal-footer">
                                                                             <button type="button"
-                                                                                class="btn btn-danger"
+                                                                                class="btn btn-primary"
                                                                                 data-bs-dismiss="modal">Cerrar</button>
                                                                             <button type="submit"
-                                                                                class="btn btn-success">Modificar</button>
+                                                                                class="btn btn-primary">Modificar</button>
                                                                         </div>
-
                                         </form>
                                     </div>
                                 </div>

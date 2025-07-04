@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registrar perfume para mujer</title>
+    <title>REGISTAR PERFUMES FEMENINOS</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,8 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="{{ route('index') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
                 <div class="">
                     <img src="{{ asset('assets/logo.png.png') }}" style="width: 65px; height: auto;">
                 </div>
@@ -53,31 +52,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Usuarios
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Registros</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_Usuarios') }}">Registar Usuarios</a>
-                        
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Perfumes
+                Gestor De Perfumes
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -85,7 +60,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHombre"
                     aria-expanded="true" aria-controls="collapseHombre">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes De Hombre</span>
+                    <span>Perfumes Maculinos</span>
                 </a>
                 <div id="collapseHombre" class="collapse" aria-labelledby="headingHombre"
                     data-parent="#accordionSidebar">
@@ -101,7 +76,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMujer"
                     aria-expanded="true" aria-controls="collapseMujer">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes De Mujer</span>
+                    <span>Perfumes Femeninos</span>
                 </a>
                 <div id="collapseMujer" class="collapse" aria-labelledby="headingMujer" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -134,7 +109,7 @@
 
             <!-- Nav Item - Tables -->
             <div class="sidebar-heading">
-                Pedidos
+                Gestor De Pedidos
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -179,20 +154,6 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -223,7 +184,7 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
-                         <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span
@@ -263,7 +224,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">REGISTAR PERFUMES PARA MUJERES</h1>
+                        <h1 class="h3 text-gray-800" style="margin-left: 50px; margin-top: 20px;">REGISTRAR PERFUMES
+                            FEMENINOS</h1>
                     </div>
 
                     @if (session('Correcto'))
@@ -299,7 +261,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar datos del perfume
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTAR DATOS DEL PERFUME
                                     </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
@@ -391,10 +353,11 @@
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary"
+                                            <button type="button" class="btn btn-danger"
                                                 data-bs-dismiss="modal">Cerrar</button>
-                                            <button type="submit" class="btn btn-primary">Registrar</button>
+                                            <button type="submit" class="btn btn-success">Registrar</button>
                                         </div>
+
                                     </form>
                                 </div>
                             </div>
@@ -412,186 +375,193 @@
                     @endif
 
                     <div class="p-5 table-responsive">
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalregistar">Añadir
-                            perfume</button>
+                        <button class="btn btn-success" style="margin-top: -30px;" data-bs-toggle="modal"
+                            data-bs-target="#modalregistar">
+                            Añadir perfume
+                        </button>
                         <table class="table table-striped table-bordered table-hover">
                             <thead class="bg-primary text-white">
                                 <tr>
 
-                                <th scope="col">CASA</th>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">CANTIDAD</th>
-                                <th scope="col">TIPO DE PERFUME</th>
-                                <th scope="col">FRASCO EN ML</th>
-                                <th scope="col">FECHA</th>
-                                <th scope="col">HORA</th>
+                                    <th scope="col">CASA</th>
+                                    <th scope="col">NOMBRE</th>
+                                    <th scope="col">CANTIDAD</th>
+                                    <th scope="col">TIPO DE PERFUME</th>
+                                    <th scope="col">FRASCO EN ML</th>
+                                    <th scope="col">FECHA</th>
+                                    <th scope="col">HORA</th>
 
 
-                        <tbody class="table-group-divider">
-                            @foreach ($datos as $key => $item)
-                                <tr>
+                            <tbody class="table-group-divider">
+                                @foreach ($datos as $key => $item)
+                                    <tr>
 
-                                    <td>{{ $item->casa }}</td>
-                                    <td>{{ $item->nombre }}</td>
-                                    <td>{{ $item->cantidad }}</td>
-                                    <td>{{ $item->tipo_perfume }}</td>
-                                    <td>{{ $item->frasco_ml }}</td>
-                                    <td>{{ $item->fecha }}</td>
-                                    <td>{{ $item->hora }}</td>
-                                </tr>
-                        </tbody>
+                                        <td>{{ $item->casa }}</td>
+                                        <td>{{ $item->nombre }}</td>
+                                        <td>{{ $item->cantidad }}</td>
+                                        <td>{{ $item->tipo_perfume }}</td>
+                                        <td>{{ $item->frasco_ml }}</td>
+                                        <td>{{ $item->fecha }}</td>
+                                        <td>{{ $item->hora }}</td>
+                                    </tr>
+                            </tbody>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="modaleditar{{ $item->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar datos del
-                                            perfume</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{{ route('crud.update') }}" method="POST">
-                                            @csrf
+                            <!-- Modal -->
+                            <div class="modal fade" id="modaleditar{{ $item->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar datos del
+                                                perfume</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('crud.update') }}" method="POST">
+                                                @csrf
 
-                                            <input type="hidden" name="txtcodigo" value="{{ $item->id }}">
-
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Casa</label>
-                                                <input type="text" class="form-control" name="txtcasa"
-                                                    value="{{ old('txtcasa', $item->casa) }}">
-                                                @error('txtcasa')
-                                                    <div class="text-danger small">{{ $message }}</div>
-                                                @enderror
-
+                                                <input type="hidden" name="txtcodigo" value="{{ $item->id }}">
 
                                                 <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                                    <input type="text" class="form-control" name="txtnombre"
-                                                        value="{{ old('txtnombre', $item->nombre) }}">
-                                                    @error('txtnombre')
+                                                    <label for="exampleInputEmail1" class="form-label">Casa</label>
+                                                    <input type="text" class="form-control" name="txtcasa"
+                                                        value="{{ old('txtcasa', $item->casa) }}">
+                                                    @error('txtcasa')
                                                         <div class="text-danger small">{{ $message }}</div>
                                                     @enderror
 
 
                                                     <div class="mb-3">
                                                         <label for="exampleInputEmail1"
-                                                            class="form-label">Cantidad</label>
-                                                        <input type="text" class="form-control" name="txtcantidad"
-                                                            value="{{ old('txtcantidad', $item->cantidad) }}">
-                                                        @error('txtcantidad')
+                                                            class="form-label">Nombre</label>
+                                                        <input type="text" class="form-control" name="txtnombre"
+                                                            value="{{ old('txtnombre', $item->nombre) }}">
+                                                        @error('txtnombre')
                                                             <div class="text-danger small">{{ $message }}</div>
                                                         @enderror
 
 
                                                         <div class="mb-3">
-                                                            <label for="tipo" class="form-label">Tipo</label>
-                                                            <select class="form-control" name="txttipo">
-                                                                <option hidden value="">Escoge un tipo</option>
-                                                                <option value="Perfume"
-                                                                    {{ old('txttipo', $item->tipo_perfume) == 'Perfume' ? 'selected' : '' }}>
-                                                                    Perfume</option>
-                                                                <option value="Perfumero"
-                                                                    {{ old('txttipo', $item->tipo_perfume) == 'Perfumero' ? 'selected' : '' }}>
-                                                                    Perfumero</option>
-                                                            </select>
-                                                            @error('txttipo')
+                                                            <label for="exampleInputEmail1"
+                                                                class="form-label">Cantidad</label>
+                                                            <input type="text" class="form-control"
+                                                                name="txtcantidad"
+                                                                value="{{ old('txtcantidad', $item->cantidad) }}">
+                                                            @error('txtcantidad')
                                                                 <div class="text-danger small">{{ $message }}</div>
                                                             @enderror
 
+
                                                             <div class="mb-3">
-                                                                <label for="frasco"
-                                                                    class="form-label">Frasco</label>
-                                                                <select class="form-control" name="txtfrasco">
-                                                                    <option hidden value="">Escoge un frasco
+                                                                <label for="tipo" class="form-label">Tipo</label>
+                                                                <select class="form-control" name="txttipo">
+                                                                    <option hidden value="">Escoge un tipo
                                                                     </option>
-                                                                    <option value="50"
-                                                                        {{ old('txtfrasco', $item->frasco_ml) == '50' ? 'selected' : '' }}>
-                                                                        50 ml</option>
-                                                                    <option value="100"
-                                                                        {{ old('txtfrasco', $item->frasco_ml) == '100' ? 'selected' : '' }}>
-                                                                        100 ml</option>
+                                                                    <option value="Perfume"
+                                                                        {{ old('txttipo', $item->tipo_perfume) == 'Perfume' ? 'selected' : '' }}>
+                                                                        Perfume</option>
+                                                                    <option value="Perfumero"
+                                                                        {{ old('txttipo', $item->tipo_perfume) == 'Perfumero' ? 'selected' : '' }}>
+                                                                        Perfumero</option>
                                                                 </select>
-                                                                @error('txtfrasco')
+                                                                @error('txttipo')
                                                                     <div class="text-danger small">{{ $message }}
                                                                     </div>
                                                                 @enderror
 
                                                                 <div class="mb-3">
-                                                                    <label for="fecha"
-                                                                        class="form-label">Fecha</label>
-                                                                    <input type="date" class="form-control"
-                                                                        name="txtfecha"
-                                                                        value="{{ old('txtfecha', $item->fecha) }}">
-                                                                    @error('txtfecha')
+                                                                    <label for="frasco"
+                                                                        class="form-label">Frasco</label>
+                                                                    <select class="form-control" name="txtfrasco">
+                                                                        <option hidden value="">Escoge un frasco
+                                                                        </option>
+                                                                        <option value="50"
+                                                                            {{ old('txtfrasco', $item->frasco_ml) == '50' ? 'selected' : '' }}>
+                                                                            50 ml</option>
+                                                                        <option value="100"
+                                                                            {{ old('txtfrasco', $item->frasco_ml) == '100' ? 'selected' : '' }}>
+                                                                            100 ml</option>
+                                                                    </select>
+                                                                    @error('txtfrasco')
                                                                         <div class="text-danger small">{{ $message }}
                                                                         </div>
                                                                     @enderror
 
-
                                                                     <div class="mb-3">
-                                                                        <label for="hora"
-                                                                            class="form-label">Hora</label>
-                                                                        <input type="time" class="form-control"
-                                                                            name="txthora"
-                                                                            value="{{ old('txthora', $item->hora) }}">
-                                                                        @error('txthora')
+                                                                        <label for="fecha"
+                                                                            class="form-label">Fecha</label>
+                                                                        <input type="date" class="form-control"
+                                                                            name="txtfecha"
+                                                                            value="{{ old('txtfecha', $item->fecha) }}">
+                                                                        @error('txtfecha')
                                                                             <div class="text-danger small">
-                                                                                {{ $message }}</div>
+                                                                                {{ $message }}
+                                                                            </div>
                                                                         @enderror
 
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-primary"
-                                                                                data-bs-dismiss="modal">Cerrar</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary">Modificar</button>
-                                                                        </div>
-                                        </form>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="hora"
+                                                                                class="form-label">Hora</label>
+                                                                            <input type="time" class="form-control"
+                                                                                name="txthora"
+                                                                                value="{{ old('txthora', $item->hora) }}">
+                                                                            @error('txthora')
+                                                                                <div class="text-danger small">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
+
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary">Modificar</button>
+                                                                            </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        </tr>
-                        @endforeach
+                            </tr>
+                            @endforeach
 
-                        @if ($errors->any())
-                            <script>
-                                document.addEventListener("DOMContentLoaded", function() {
-                                    let modalId = 'modaleditar{{ old('txtcodigo') }}';
-                                    let modal = new bootstrap.Modal(document.getElementById(modalId));
-                                    modal.show();
-                                });
-                            </script>
-                        @endif
+                            @if ($errors->any())
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        let modalId = 'modaleditar{{ old('txtcodigo') }}';
+                                        let modal = new bootstrap.Modal(document.getElementById(modalId));
+                                        modal.show();
+                                    });
+                                </script>
+                            @endif
 
-                        </thead>
-                    </table>
-                </div>
+                            </thead>
+                        </table>
+                    </div>
 
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                    <!-- Bootstrap core JavaScript-->
+                    <script src="vendor/jquery/jquery.min.js"></script>
+                    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                    <!-- Core plugin JavaScript-->
+                    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
+                    <!-- Custom scripts for all pages-->
+                    <script src="js/sb-admin-2.min.js"></script>
 
-                <!-- Page level plugins -->
-                <script src="vendor/chart.js/Chart.min.js"></script>
+                    <!-- Page level plugins -->
+                    <script src="vendor/chart.js/Chart.min.js"></script>
 
-                <!-- Page level custom scripts -->
-                <script src="js/demo/chart-area-demo.js"></script>
-                <script src="js/demo/chart-pie-demo.js"></script>
+                    <!-- Page level custom scripts -->
+                    <script src="js/demo/chart-area-demo.js"></script>
+                    <script src="js/demo/chart-pie-demo.js"></script>
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
-                </script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+                    </script>
 
 </body>
 

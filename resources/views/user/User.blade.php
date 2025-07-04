@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>VENNOT - Administrador</title>
+    <title>VENNOT - Usuario</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
 
@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index1') }}">
                 <div class="">
                     <img src="{{ asset('assets/logo.png.png') }}" style="width: 65px; height: auto;">
                 </div>
@@ -57,14 +57,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHombre"
                     aria-expanded="true" aria-controls="collapseHombre">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes Maculinos</span>
+                    <span>Perfumes Masculinos</span>
                 </a>
                 <div id="collapseHombre" class="collapse" aria-labelledby="headingHombre"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_perfum_hombre') }}">Registrar Perfume</a>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_H') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_H_User') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -78,8 +77,7 @@
                 <div id="collapseMujer" class="collapse" aria-labelledby="headingMujer" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_perfum_mujer') }}">Registrar Perfume</a>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_M') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_M_User') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -94,8 +92,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_perfum_unisex') }}">Registrar Perfume</a>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_U') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_U_User') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -116,12 +113,11 @@
                     <i class="fa-solid fa-box"></i>
                     <span>Pedidos</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_Pedido') }}">Registar Pedido</a>
-                        <a class="collapse-item" href="{{ route('Registrar_perfum_unisex') }}">Ver Pedidos</a>
+                        <a class="collapse-item" href="{{ route('Registrar_Pedido_User') }}">Registar Pedido</a>
+                        <a class="collapse-item" href="{{ route('Ver_Pedido_User') }}">Ver Pedidos</a>
                     </div>
                 </div>
             </li>
@@ -151,12 +147,32 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -205,9 +221,9 @@
                         <div class="hero-content">
                             <h1>BIENVENIDO A VENNOT</h1>
                             <h2>Tu espacio de gestión eficiente</h2>
-                            <p><strong>Rol: Administrador.</strong> Lleva el control absoluto de tu inventario de
-                                perfumes.<br>
-                                Elegancia, orden y eficiencia en una sola plataforma.</p>
+                            <p><strong>Rol: Usuario.</strong> Explora y consulta el inventario de perfumes con
+                                facilidad.<br>
+                                Acceso rápido, claro y elegante a toda la información que necesitas.</p>
                         </div>
 
                     </div>
@@ -284,9 +300,6 @@
                         }
                     </style>
 
-
-
-
                     <!-- Content Row -->
                     <div class="row">
 
@@ -297,7 +310,6 @@
                         <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
                         <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
                         <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-
 
 </body>
 

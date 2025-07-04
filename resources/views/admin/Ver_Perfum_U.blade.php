@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ver perfumes unisex</title>
+    <title>VER PERFUMES UNISEX</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,8 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="{{ route('index') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
                 <div class="">
                     <img src="{{ asset('assets/logo.png.png') }}" style="width: 65px; height: auto;">
                 </div>
@@ -53,31 +52,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Usuarios
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Registros</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_Usuarios') }}">Registar Usuarios</a>
-                        
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Perfumes
+                Gestor De Perfumes
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -85,7 +60,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHombre"
                     aria-expanded="true" aria-controls="collapseHombre">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes De Hombre</span>
+                    <span>Perfumes Masculinos</span>
                 </a>
                 <div id="collapseHombre" class="collapse" aria-labelledby="headingHombre"
                     data-parent="#accordionSidebar">
@@ -101,7 +76,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMujer"
                     aria-expanded="true" aria-controls="collapseMujer">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes De Mujer</span>
+                    <span>Perfumes Femeninos</span>
                 </a>
                 <div id="collapseMujer" class="collapse" aria-labelledby="headingMujer" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -134,7 +109,7 @@
 
             <!-- Nav Item - Tables -->
             <div class="sidebar-heading">
-                Pedidos
+                Gestor De Pedidos
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -178,20 +153,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -263,7 +224,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">VER PERFUMES UNISEX</h1>
+                        <h1 class="h3 text-gray-800" style="margin-left: 40px; margin-top: 20px;">VER PERFUMES
+                            UNISEX</h1>
                     </div>
 
                     @if (session('Correcto'))
@@ -305,7 +267,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('crud.create') }}" method="post">
+                                    <form action="{{ route('crud.create2') }}" method="post">
                                         @csrf
 
                                         <div class="mb-3">
@@ -370,8 +332,8 @@
                 </div>
 
                 <div class="p-5 table-responsive">
-                    
-                    <table class="table table-striped table-bordered table-hover">
+
+                    <table class="table table-striped table-bordered table-hover" style="margin-top: -20px;">
                         <thead class="bg-primary text-white">
                             <tr>
 
@@ -396,16 +358,25 @@
                                     <td>{{ $item->fecha }}</td>
                                     <td>{{ $item->hora }}</td>
                                     <td>
+
+                                        <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#modalFechaCantidad" data-id="{{ $item->id }}"
+                                            data-fecha="{{ $item->fecha }}">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </a>
+
                                         <a href="" data-bs-toggle="modal"
                                             data-bs-target="#modaleditar{{ $item->id }}"
                                             class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"
                                                 style="color: #000000;"></i></a>
 
                                         <!-- Botón de eliminar -->
-                                        <a href="{{ route('crud.delete2', $item->id) }}" class="btn btn-danger btn-sm"
-                                            onclick="mostrarModal(this); return false;">
+                                        <a href="{{ route('crud.delete2', $item->id) }}"
+                                            class="btn btn-danger btn-sm" onclick="mostrarModal(this); return false;">
                                             <i class="fa-solid fa-delete-left" style="color: #000000;"></i>
                                         </a>
+
+
 
                                         <div id="modalConfirmacion" class="modal">
                                             <div class="modal-contenido moderno">
@@ -420,6 +391,76 @@
                                             </div>
                                         </div>
 
+                                        <div class="modal fade" id="modalFechaCantidad" tabindex="-1"
+                                            aria-labelledby="modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalLabel">ACTUALIZAR FECHA Y CANTIDAD</h5>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('updateCantidadFecha') }}"
+                                                            method="POST">
+                                                            @csrf
+
+                                                            <input type="hidden" name="txtcodigo" id="txtcodigo">
+
+                                                            <div class="mb-3">
+                                                                <label for="txtcantidad" class="form-label">Cantidad a
+                                                                    sumar</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="txtcantidad" id="txtcantidad" required>
+                                                                @error('txtcantidad')
+                                                                    <div class="text-danger small">{{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="txtfecha" class="form-label">Fecha</label>
+                                                                <input type="date" class="form-control"
+                                                                    name="txtfecha" id="txtfecha" required>
+                                                                @error('txtfecha')
+                                                                    <div class="text-danger small">{{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-success">Guardar</button>
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', () => {
+                                                var modal = document.getElementById('modalFechaCantidad');
+                                                modal.addEventListener('show.bs.modal', function(event) {
+                                                    var button = event.relatedTarget;
+                                                    var id = button.getAttribute('data-id');
+                                                    var cantidad = button.getAttribute('data-cantidad');
+                                                    var fecha = button.getAttribute('data-fecha');
+
+                                                    modal.querySelector('input[name="txtcodigo"]').value = id;
+                                                    modal.querySelector('input[name="txtcantidad"]').value = cantidad;
+                                                    modal.querySelector('input[name="txtfecha"]').value = fecha;
+                                                });
+                                            });
+                                        </script>
+
 
                                     </td>
                                 </tr>
@@ -431,8 +472,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar datos del
-                                            perfume</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">MODIFICAR DATOS DEL PERFUME</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -451,13 +491,13 @@
                                                 @enderror
 
 
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                                <input type="text" class="form-control" name="txtnombre"
-                                                    value="{{ old('txtnombre', $item->nombre) }}">
-                                                @error('txtnombre')
-                                                    <div class="text-danger small">{{ $message }}</div>
-                                                @enderror
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                                    <input type="text" class="form-control" name="txtnombre"
+                                                        value="{{ old('txtnombre', $item->nombre) }}">
+                                                    @error('txtnombre')
+                                                        <div class="text-danger small">{{ $message }}</div>
+                                                    @enderror
 
 
                                                     <div class="mb-3">
@@ -528,11 +568,12 @@
 
                                                                         <div class="modal-footer">
                                                                             <button type="button"
-                                                                                class="btn btn-primary"
+                                                                                class="btn btn-danger"
                                                                                 data-bs-dismiss="modal">Cerrar</button>
                                                                             <button type="submit"
-                                                                                class="btn btn-primary">Modificar</button>
+                                                                                class="btn btn-success">Modificar</button>
                                                                         </div>
+
                                         </form>
                                     </div>
                                 </div>
