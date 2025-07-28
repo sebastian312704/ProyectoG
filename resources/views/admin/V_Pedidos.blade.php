@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>VENNOT - Usuario</title>
+    <title>REGISTAR PEDIDOS</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
 
@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index1') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
                 <div class="">
                     <img src="{{ asset('assets/logo.png.png') }}" style="width: 65px; height: auto;">
                 </div>
@@ -57,13 +57,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHombre"
                     aria-expanded="true" aria-controls="collapseHombre">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes Masculinos</span>
+                    <span>Perfumes Maculinos</span>
                 </a>
                 <div id="collapseHombre" class="collapse" aria-labelledby="headingHombre"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_H_User') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Registrar_perfum_hombre') }}">Registrar Perfume</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_H') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -77,7 +78,8 @@
                 <div id="collapseMujer" class="collapse" aria-labelledby="headingMujer" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_M_User') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Registrar_perfum_mujer') }}">Registrar Perfume</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_M') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -92,7 +94,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_U_User') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Registrar_perfum_unisex') }}">Registrar Perfume</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_U') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -113,11 +116,12 @@
                     <i class="fa-solid fa-box"></i>
                     <span>Pedidos</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Pedido1') }}">Registar Pedido</a>
-                        <a class="collapse-item" href="{{ route('Ver_Pedido1') }}">Ver Pedidos</a>
+                        <a class="collapse-item" href="{{ route('Pedido') }}">Registar Pedido</a>
+                        <a class="collapse-item" href="{{ route('Ver_Pedido') }}">Ver Pedidos</a>
                     </div>
                 </div>
             </li>
@@ -147,32 +151,12 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <!-- Topbar Search -->
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -210,98 +194,16 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 text-gray-800" style="margin-left: 75px; margin-top: 20px;">VER PEDIDOS</h1>
+                </div>
 
-                    <div class="hero-section" style="background-image: url('{{ asset('assets/nube.jpg') }}');">
-                        <div class="overlay-dark"></div>
+                
 
-                        <div class="hero-content">
-                            <h1>BIENVENIDO A VENNOT</h1>
-                            <h2>Tu espacio de gestión eficiente</h2>
-                            <p><strong>Rol: Colaborador.</strong> Explora y consulta el inventario de perfumes con
-                                facilidad.<br>
-                                Acceso rápido, claro y elegante a toda la información que necesitas.</p>
-                        </div>
 
-                    </div>
 
-                    <style>
-                        * {
-                            margin: 0;
-                            padding: 0;
-                            box-sizing: border-box;
-                        }
 
-                        html,
-                        body {
-                            height: 100%;
-                            font-family: 'Segoe UI', sans-serif;
-                            background: #fff;
-                            /* fondo blanco */
-                        }
-
-                        /* Sección principal con márgenes */
-                        .hero-section {
-                            position: relative;
-                            width: calc(100% - 40px);
-                            /* 20px a cada lado */
-                            height: calc(100vh - 40px);
-                            /* 20px arriba y abajo */
-                            margin: 20px;
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            text-align: center;
-                            color: white;
-                        }
-
-                        /* Capa oscura y desenfoque */
-                        .overlay-dark {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            background-color: rgba(0, 0, 0, 0.5);
-                            backdrop-filter: blur(6px);
-                            z-index: 0;
-                        }
-
-                        /* Contenido encima */
-                        .hero-content {
-                            position: relative;
-                            z-index: 1;
-                            padding: 20px;
-                        }
-
-                        .hero-content h1 {
-                            font-size: 3rem;
-                            font-weight: bold;
-                            margin-bottom: 10px;
-                        }
-
-                        .hero-content h2 {
-                            font-size: 1.8rem;
-                            color: #d8c9ff;
-                            margin-bottom: 20px;
-                        }
-
-                        .hero-content p {
-                            font-size: 1.1rem;
-                            color: #e8e8f4;
-                            max-width: 600px;
-                            margin: 0 auto;
-                        }
-                    </style>
-
-                    <!-- Content Row -->
-                    <div class="row">
 
                         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
                         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -310,6 +212,7 @@
                         <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
                         <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
                         <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+
 
 </body>
 

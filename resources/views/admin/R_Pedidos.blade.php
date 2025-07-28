@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>VER PERFUMES UNISEX</title>
+    <title>REGISTAR PERFUMES UNISEX</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,8 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="{{ route('index1') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
                 <div class="">
                     <img src="{{ asset('assets/logo.png.png') }}" style="width: 65px; height: auto;">
                 </div>
@@ -61,13 +60,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHombre"
                     aria-expanded="true" aria-controls="collapseHombre">
                     <i class="fas fa-spray-can"></i>
-                    <span>Perfumes Masculinos</span>
+                    <span>Perfumes Maculinos</span>
                 </a>
                 <div id="collapseHombre" class="collapse" aria-labelledby="headingHombre"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_H_User') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Registrar_perfum_hombre') }}">Registrar Perfume</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_H') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -81,7 +81,8 @@
                 <div id="collapseMujer" class="collapse" aria-labelledby="headingMujer" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_M_User') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Registrar_perfum_mujer') }}">Registrar Perfume</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_M') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -96,7 +97,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Ver_Perfum_U_User') }}">Ver Perfumes</a>
+                        <a class="collapse-item" href="{{ route('Registrar_perfum_unisex') }}">Registrar Perfume</a>
+                        <a class="collapse-item" href="{{ route('Ver_Perfum_U') }}">Ver Perfumes</a>
                     </div>
                 </div>
             </li>
@@ -107,7 +109,7 @@
 
             <!-- Nav Item - Tables -->
             <div class="sidebar-heading">
-                Gestor De Pedidos
+                Gestor de Pedidos
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -121,8 +123,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Pedido1') }}">Registar Pedido</a>
-                        <a class="collapse-item" href="{{ route('Ver_Pedido1') }}">Ver Pedidos</a>
+                        <a class="collapse-item" href="{{ route('Pedido') }}">Registar Pedido</a>
+                        <a class="collapse-item" href="{{ route('Ver_Pedido') }}">Ver Pedidos</a>
                     </div>
                 </div>
             </li>
@@ -151,6 +153,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -222,8 +225,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 text-gray-800" style="margin-left: 40px; margin-top: 20px;">VER PERFUMES
-                            UNISEX</h1>
+                        <h1 class="h3 text-gray-800" style="margin-left: 50px; margin-top: 20px;">REGISTRAR PEDIDOS
+                        </h1>
                     </div>
 
                     @if (session('Correcto'))
@@ -259,77 +262,138 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registar datos del perfume
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTAR DATOS DEL PERFUME
                                     </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('crud.create') }}" method="post">
+                                    <form action="{{ route('crud.create2') }}" method="POST">
                                         @csrf
 
+                                        <!-- Casa -->
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Casa</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                                aria-describedby="emailHelp" name="txtcasa">
+                                            <label for="txtcasa" class="form-label">Casa</label>
+                                            <input type="text" class="form-control" name="txtcasa"
+                                                value="{{ old('txtcasa') }}">
+                                            @error('txtcasa')
+                                                <div class="text-danger small">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
+                                        <!-- Nombre -->
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                                aria-describedby="emailHelp" name="txtnombre">
+                                            <label for="txtnombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" name="txtnombre"
+                                                value="{{ old('txtnombre') }}">
+                                            @error('txtnombre')
+                                                <div class="text-danger small">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
+                                        <!-- Cantidad -->
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Cantidad</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                                aria-describedby="emailHelp" name="txtcantidad">
+                                            <label for="txtcantidad" class="form-label">Cantidad</label>
+                                            <input type="text" class="form-control" name="txtcantidad"
+                                                value="{{ old('txtcantidad') }}">
+                                            @error('txtcantidad')
+                                                <div class="text-danger small">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
+                                        <!-- Tipo -->
                                         <div class="mb-3">
-                                            <label for="tipo" class="form-label">Tipo</label>
-                                            <select class="form-control" id="tipo" name="txttipo" required>
+                                            <label for="txttipo" class="form-label">Tipo</label>
+                                            <select class="form-control" name="txttipo" required>
                                                 <option hidden value="">Escoge un tipo</option>
-                                                <option value="Perfume">Perfume</option>
-                                                <option value="Perfumero">Perfumero</option>
+                                                <option value="Perfume"
+                                                    {{ old('txttipo') == 'Perfume' ? 'selected' : '' }}>Perfume
+                                                </option>
+                                                <option value="Perfumero"
+                                                    {{ old('txttipo') == 'Perfumero' ? 'selected' : '' }}>Perfumero
+                                                </option>
                                             </select>
+                                            @error('txttipo')
+                                                <div class="text-danger small">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
+                                        <!-- Frasco -->
                                         <div class="mb-3">
-                                            <label for="frasco" class="form-label">Frasco</label>
-                                            <select class="form-control" id="frasco" name="txtfrasco" required>
+                                            <label for="txtfrasco" class="form-label">Frasco</label>
+                                            <select class="form-control" name="txtfrasco" required>
                                                 <option hidden value="">Escoge un frasco</option>
-                                                <option value="50">50 ml</option>
-                                                <option value="100">100 ml</option>
+                                                <option value="50"
+                                                    {{ old('txtfrasco') == '50' ? 'selected' : '' }}>50 ml</option>
+                                                <option value="100"
+                                                    {{ old('txtfrasco') == '100' ? 'selected' : '' }}>100 ml</option>
                                             </select>
+                                            @error('txtfrasco')
+                                                <div class="text-danger small">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
-
+                                        <!-- Fecha -->
                                         <div class="mb-3">
-                                            <label for="fecha" class="form-label">Fecha</label>
-                                            <input type="date" class="form-control" id="fecha"
-                                                name="txtfecha">
+                                            <label for="txtfecha" class="form-label">Fecha</label>
+                                            <input type="date" class="form-control" name="txtfecha"
+                                                value="{{ old('txtfecha') }}">
+                                            @error('txtfecha')
+                                                <div class="text-danger small">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
+                                        <!-- Hora -->
                                         <div class="mb-3">
-                                            <label for="hora" class="form-label">Hora</label>
-                                            <input type="time" class="form-control" id="hora"
-                                                name="txthora">
+                                            <label for="txthora" class="form-label">Hora</label>
+                                            <input type="time" class="form-control" name="txthora"
+                                                value="{{ old('txthora') }}">
+                                            @error('txthora')
+                                                <div class="text-danger small">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-success">Registrar</button>
+                                        </div>
+
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary"
-                                        data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-primary">Registar</button>
-                                </div>
-                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                 <div class="p-5">
+                    <!-- Mostrar el modal si hay errores de validación -->
+                    @if ($errors->any())
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                var modal = new bootstrap.Modal(document.getElementById('modalregistar'));
+                                modal.show();
+                            });
+                        </script>
+                    @endif
+
+                    <div class="p-3">
+                        <div class="row mb-3 align-items-end">
+                            <div class="col-md-4">
+                                <label for="nombreCompleto" class="form-label">Nombre completo</label>
+                                <input type="text" id="nombreCompleto" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="celular" class="form-label">Celular</label>
+                                <input type="text" id="celular" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <input type="text" id="direccion" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="pt-1 pb-1">
                         <div class="row mb-3 align-items-end">
                             <div class="col-md-4">
                                 <label for="filtroNombre" class="form-label">Filtrar por nombre</label>
@@ -352,194 +416,126 @@
                                 </select>
                             </div>
                             <div class="col-md-1">
-                                <button id="btnLimpiar" class="btn btn-secondary w-100">Limpiar</button>
+                                <button id="btnLimpiar" class="btn btn-primary">Limpiar</button>
                             </div>
                         </div>
                     </div>
 
-                <div class="p-5 table-responsive">
-                    
-                    <table class="table table-striped table-bordered table-hover" style="margin-top: -50px;">
-                        <thead class="bg-primary text-white">
-                            <tr>
 
-                                <th scope="col">CASA</th>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">CANTIDAD</th>
-                                <th scope="col">TIPO DE PERFUME</th>
-                                <th scope="col">FRASCO EN ML</th>
-                                <th scope="col">FECHA</th>
-                                <th scope="col">HORA</th>
-                                
+                    <!-- Estilos para columnas más amplias -->
+                    <style>
+                        .tabla-expandida th,
+                        .tabla-expandida td {
+                            white-space: nowrap;
+                            min-width: 120px;
+                            vertical-align: middle;
+                        }
+                    </style>
 
-                        <tbody class="table-group-divider">
-                            @foreach ($datos as $key => $item)
+                    <!-- Contenedor con margen negativo para mover la tabla a la izquierda -->
+                    <div class="p-5" style="margin-left: -45px;">
+                        <button id="btnDetallesPedido" class="btn btn-primary" style="margin-top: -10px;">
+                            Detalles del pedido
+                        </button>
+                        <table class="table table-striped table-bordered table-hover tabla-expandida">
+                            <thead class="bg-primary text-white">
                                 <tr>
-
-                                    <td>{{ $item->casa }}</td>
-                                    <td>{{ $item->nombre }}</td>
-                                    <td>{{ $item->cantidad }}</td>
-                                    <td>{{ $item->tipo_perfume }}</td>
-                                    <td>{{ $item->frasco_ml }}</td>
-                                    <td>{{ $item->fecha }}</td>
-                                    <td>{{ $item->hora }}</td>
-                                    
+                                    <th scope="col">CASA</th>
+                                    <th scope="col">NOMBRE</th>
+                                    <th scope="col">CANTIDAD</th>
+                                    <th scope="col">TIPO DE PERFUME</th>
+                                    <th scope="col">FRASCO EN ML</th>
+                                    <th scope="col">FECHA</th>
+                                    <th scope="col">HORA</th>
+                                    <th scope="col">SELECCIONAR</th>
                                 </tr>
-                        </tbody>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                @foreach ($datos as $key => $item)
+                                    <tr>
+                                        <td>{{ $item->casa }}</td>
+                                        <td>{{ $item->nombre }}</td>
+                                        <td>{{ $item->cantidad }}</td>
+                                        <td>{{ $item->tipo_perfume }}</td>
+                                        <td>{{ $item->frasco_ml }}</td>
+                                        <td>{{ $item->fecha }}</td>
+                                        <td>{{ $item->hora }}</td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <input type="checkbox" id="check_{{ $item->id }}"
+                                                    onchange="document.getElementById('cantidad_{{ $item->id }}').disabled = !this.checked">
+                                                <input type="number" id="cantidad_{{ $item->id }}"
+                                                    name="cantidades[{{ $item->id }}]" min="1"
+                                                    max="{{ $item->cantidad }}" disabled style="width: 60px;">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="modaleditar{{ $item->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar datos del
-                                            perfume</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{{ route('crud.update2') }}" method="POST">
-                                            @csrf
+                        <!-- Script para obtener datos seleccionados -->
+                        <script>
+                            document.getElementById('btnDetallesPedido').addEventListener('click', () => {
+                                const detalles = [];
+                                @foreach ($datos as $item)
+                                    const check = document.getElementById('check_{{ $item->id }}');
+                                    if (check && check.checked) {
+                                        const cantidadInput = document.getElementById('cantidad_{{ $item->id }}');
+                                        const cantidad = cantidadInput ? parseInt(cantidadInput.value) : 0;
+                                        if (cantidad > 0 && cantidad <= {{ $item->cantidad }}) {
+                                            detalles.push({
+                                                id: {{ $item->id }},
+                                                casa: "{{ $item->casa }}",
+                                                nombre: "{{ $item->nombre }}",
+                                                cantidad: cantidad,
+                                                tipo_perfume: "{{ $item->tipo_perfume }}",
+                                                frasco_ml: "{{ $item->frasco_ml }}",
+                                                fecha: "{{ $item->fecha }}",
+                                                hora: "{{ $item->hora }}"
+                                            });
+                                        }
+                                    }
+                                @endforeach
 
-                                            <input type="hidden" name="txtcodigo" value="{{ $item->id }}">
+                                if (detalles.length === 0) {
+                                    alert('No has seleccionado ningún perfume con cantidad válida.');
+                                    return;
+                                }
 
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Casa</label>
-                                                <input type="text" class="form-control" name="txtcasa"
-                                                    value="{{ old('txtcasa', $item->casa) }}">
-                                                @error('txtcasa')
-                                                    <div class="text-danger small">{{ $message }}</div>
-                                                @enderror
-
-
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                                <input type="text" class="form-control" name="txtnombre"
-                                                    value="{{ old('txtnombre', $item->nombre) }}">
-                                                @error('txtnombre')
-                                                    <div class="text-danger small">{{ $message }}</div>
-                                                @enderror
-
-
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1"
-                                                            class="form-label">Cantidad</label>
-                                                        <input type="text" class="form-control" name="txtcantidad"
-                                                            value="{{ old('txtcantidad', $item->cantidad) }}">
-                                                        @error('txtcantidad')
-                                                            <div class="text-danger small">{{ $message }}</div>
-                                                        @enderror
-
-
-                                                        <div class="mb-3">
-                                                            <label for="tipo" class="form-label">Tipo</label>
-                                                            <select class="form-control" name="txttipo">
-                                                                <option hidden value="">Escoge un tipo</option>
-                                                                <option value="Perfume"
-                                                                    {{ old('txttipo', $item->tipo_perfume) == 'Perfume' ? 'selected' : '' }}>
-                                                                    Perfume</option>
-                                                                <option value="Perfumero"
-                                                                    {{ old('txttipo', $item->tipo_perfume) == 'Perfumero' ? 'selected' : '' }}>
-                                                                    Perfumero</option>
-                                                            </select>
-                                                            @error('txttipo')
-                                                                <div class="text-danger small">{{ $message }}</div>
-                                                            @enderror
-
-                                                            <div class="mb-3">
-                                                                <label for="frasco"
-                                                                    class="form-label">Frasco</label>
-                                                                <select class="form-control" name="txtfrasco">
-                                                                    <option hidden value="">Escoge un frasco
-                                                                    </option>
-                                                                    <option value="50"
-                                                                        {{ old('txtfrasco', $item->frasco_ml) == '50' ? 'selected' : '' }}>
-                                                                        50 ml</option>
-                                                                    <option value="100"
-                                                                        {{ old('txtfrasco', $item->frasco_ml) == '100' ? 'selected' : '' }}>
-                                                                        100 ml</option>
-                                                                </select>
-                                                                @error('txtfrasco')
-                                                                    <div class="text-danger small">{{ $message }}
-                                                                    </div>
-                                                                @enderror
-
-                                                                <div class="mb-3">
-                                                                    <label for="fecha"
-                                                                        class="form-label">Fecha</label>
-                                                                    <input type="date" class="form-control"
-                                                                        name="txtfecha"
-                                                                        value="{{ old('txtfecha', $item->fecha) }}">
-                                                                    @error('txtfecha')
-                                                                        <div class="text-danger small">{{ $message }}
-                                                                        </div>
-                                                                    @enderror
-
-
-                                                                    <div class="mb-3">
-                                                                        <label for="hora"
-                                                                            class="form-label">Hora</label>
-                                                                        <input type="time" class="form-control"
-                                                                            name="txthora"
-                                                                            value="{{ old('txthora', $item->hora) }}">
-                                                                        @error('txthora')
-                                                                            <div class="text-danger small">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
-
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-primary"
-                                                                                data-bs-dismiss="modal">Cerrar</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary">Modificar</button>
-                                                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        </tr>
-                        @endforeach
-
-                        @if ($errors->any())
-                            <script>
-                                document.addEventListener("DOMContentLoaded", function() {
-                                    let modalId = 'modaleditar{{ old('txtcodigo') }}';
-                                    let modal = new bootstrap.Modal(document.getElementById(modalId));
-                                    modal.show();
+                                let mensaje = "Detalles del pedido:\n\n";
+                                detalles.forEach(item => {
+                                    mensaje +=
+                                        `${item.nombre} - Cantidad: ${item.cantidad} - Tipo: ${item.tipo_perfume} - Frasco: ${item.frasco_ml}ml\n`;
                                 });
-                            </script>
-                        @endif
+                                alert(mensaje);
+                            });
+                        </script>
+                    </div>
 
-                        </thead>
-                    </table>
-                </div>
 
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                    <!-- Bootstrap core JavaScript-->
+                    <script src="vendor/jquery/jquery.min.js"></script>
+                    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                    <!-- Core plugin JavaScript-->
+                    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
+                    <!-- Custom scripts for all pages-->
+                    <script src="js/sb-admin-2.min.js"></script>
 
-                <!-- Page level plugins -->
-                <script src="vendor/chart.js/Chart.min.js"></script>
+                    <!-- Page level plugins -->
+                    <script src="vendor/chart.js/Chart.min.js"></script>
 
-                <!-- Page level custom scripts -->
-                <script src="js/demo/chart-area-demo.js"></script>
-                <script src="js/demo/chart-pie-demo.js"></script>
+                    <!-- Page level custom scripts -->
+                    <script src="js/demo/chart-area-demo.js"></script>
+                    <script src="js/demo/chart-pie-demo.js"></script>
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
-                </script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+                    </script>
 
-                <script>
+                    <script>
                         document.addEventListener('DOMContentLoaded', function() {
                             const filtroNombre = document.getElementById('filtroNombre');
                             const filtroTipo = document.getElementById('filtroTipo');

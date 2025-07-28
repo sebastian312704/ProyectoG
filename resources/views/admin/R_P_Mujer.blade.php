@@ -123,7 +123,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones</h6>
-                        <a class="collapse-item" href="{{ route('Registrar_Pedido') }}">Registar Pedido</a>
+                        <a class="collapse-item" href="{{ route('Pedido') }}">Registar Pedido</a>
                         <a class="collapse-item" href="{{ route('Ver_Pedido') }}">Ver Pedidos</a>
                     </div>
                 </div>
@@ -374,12 +374,40 @@
                         </script>
                     @endif
 
+                    <div class="p-5">
+                        <div class="row mb-3 align-items-end">
+                            <div class="col-md-4">
+                                <label for="filtroNombre" class="form-label">Filtrar por nombre</label>
+                                <input type="text" id="filtroNombre" class="form-control" placeholder="Ej: Dior">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
+                                <select id="filtroTipo" class="form-control">
+                                    <option value="">Todos</option>
+                                    <option value="Perfume">Perfume</option>
+                                    <option value="Perfumero">Perfumero</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="filtroFrasco" class="form-label">Filtrar por frasco (ml)</label>
+                                <select id="filtroFrasco" class="form-control">
+                                    <option value="">Todos</option>
+                                    <option value="50">50 ml</option>
+                                    <option value="100">100 ml</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <button id="btnLimpiar" class="btn btn-secondary w-100">Limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="p-5 table-responsive">
-                        <button class="btn btn-success" style="margin-top: -30px;" data-bs-toggle="modal"
+                        <button class="btn btn-success" style="margin-top: -85px;" data-bs-toggle="modal"
                             data-bs-target="#modalregistar">
                             Añadir perfume
                         </button>
-                        <table class="table table-striped table-bordered table-hover">
+                        <table class="table table-striped table-bordered table-hover" style="margin-top: -35px;">
                             <thead class="bg-primary text-white">
                                 <tr>
 
@@ -561,6 +589,45 @@
 
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+                    </script>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const filtroNombre = document.getElementById('filtroNombre');
+                            const filtroTipo = document.getElementById('filtroTipo');
+                            const filtroFrasco = document.getElementById('filtroFrasco');
+                            const btnLimpiar = document.getElementById('btnLimpiar');
+                            const filas = document.querySelectorAll('tbody tr');
+
+                            function aplicarFiltro() {
+                                const nombre = filtroNombre.value.toLowerCase();
+                                const tipo = filtroTipo.value.toLowerCase();
+                                const frasco = filtroFrasco.value;
+
+                                filas.forEach(fila => {
+                                    const nombreTd = fila.children[1].textContent.toLowerCase();
+                                    const tipoTd = fila.children[3].textContent.toLowerCase();
+                                    const frascoTd = fila.children[4].textContent;
+
+                                    const coincideNombre = nombreTd.includes(nombre);
+                                    const coincideTipo = tipo === '' || tipoTd === tipo;
+                                    const coincideFrasco = frasco === '' || frascoTd === frasco;
+
+                                    fila.style.display = (coincideNombre && coincideTipo && coincideFrasco) ? '' : 'none';
+                                });
+                            }
+
+                            filtroNombre.addEventListener('input', aplicarFiltro);
+                            filtroTipo.addEventListener('change', aplicarFiltro);
+                            filtroFrasco.addEventListener('change', aplicarFiltro);
+
+                            btnLimpiar.addEventListener('click', function() {
+                                filtroNombre.value = '';
+                                filtroTipo.value = '';
+                                filtroFrasco.value = '';
+                                aplicarFiltro();
+                            });
+                        });
                     </script>
 
 </body>

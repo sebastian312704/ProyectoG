@@ -15,6 +15,25 @@ class AdminController extends Controller
         return view('admin.Admin');
     }
 
+    public function Pedido()
+    {
+       $datos = DB::select("
+        SELECT * FROM perfumes1
+        UNION
+        SELECT * FROM perfumes
+        UNION
+        SELECT * FROM perfumes2
+    ");
+
+    return view('admin.R_Pedidos')->with("datos", $datos);
+    
+    }
+
+    public function Ver_Pedido()
+    {
+        return view('admin.V_Pedidos');
+    }
+
     public function Registrar_perfum_hombre()
     {
         $datos = DB::select("select * from perfumes");

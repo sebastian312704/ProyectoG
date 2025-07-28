@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>VENNOT - Usuario</title>
+    <title>VER PEDIDOS</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
 
@@ -210,98 +210,10 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <div class="hero-section" style="background-image: url('{{ asset('assets/nube.jpg') }}');">
-                        <div class="overlay-dark"></div>
-
-                        <div class="hero-content">
-                            <h1>BIENVENIDO A VENNOT</h1>
-                            <h2>Tu espacio de gestión eficiente</h2>
-                            <p><strong>Rol: Colaborador.</strong> Explora y consulta el inventario de perfumes con
-                                facilidad.<br>
-                                Acceso rápido, claro y elegante a toda la información que necesitas.</p>
-                        </div>
-
-                    </div>
-
-                    <style>
-                        * {
-                            margin: 0;
-                            padding: 0;
-                            box-sizing: border-box;
-                        }
-
-                        html,
-                        body {
-                            height: 100%;
-                            font-family: 'Segoe UI', sans-serif;
-                            background: #fff;
-                            /* fondo blanco */
-                        }
-
-                        /* Sección principal con márgenes */
-                        .hero-section {
-                            position: relative;
-                            width: calc(100% - 40px);
-                            /* 20px a cada lado */
-                            height: calc(100vh - 40px);
-                            /* 20px arriba y abajo */
-                            margin: 20px;
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            text-align: center;
-                            color: white;
-                        }
-
-                        /* Capa oscura y desenfoque */
-                        .overlay-dark {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            background-color: rgba(0, 0, 0, 0.5);
-                            backdrop-filter: blur(6px);
-                            z-index: 0;
-                        }
-
-                        /* Contenido encima */
-                        .hero-content {
-                            position: relative;
-                            z-index: 1;
-                            padding: 20px;
-                        }
-
-                        .hero-content h1 {
-                            font-size: 3rem;
-                            font-weight: bold;
-                            margin-bottom: 10px;
-                        }
-
-                        .hero-content h2 {
-                            font-size: 1.8rem;
-                            color: #d8c9ff;
-                            margin-bottom: 20px;
-                        }
-
-                        .hero-content p {
-                            font-size: 1.1rem;
-                            color: #e8e8f4;
-                            max-width: 600px;
-                            margin: 0 auto;
-                        }
-                    </style>
-
-                    <!-- Content Row -->
-                    <div class="row">
+                
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 text-gray-800" style="margin-left: 75px; margin-top: 20px;">VER PEDIDOS</h1>
+                </div>
 
                         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
                         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -15,6 +15,16 @@ class UserController extends Controller
         return view ('user.User');
     }
 
+     public function Pedido1()
+    {
+        return view('user.R_Pedidos_U');
+    }
+
+    public function Ver_Pedido1()
+    {
+        return view('user.V_Pedidos_U');
+    }
+
     //vista para ver los perfumes de hombre modo user
     public function Ver_Perfum_H_User()
     {
