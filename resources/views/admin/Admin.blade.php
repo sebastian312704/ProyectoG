@@ -134,6 +134,8 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
+
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -146,6 +148,7 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
+
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -155,6 +158,37 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                        
+
+                        <!-- Notificaciones -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="notificacionesDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                @if (isset($stockBajo) && count($stockBajo) > 0)
+                                    <span class="badge bg-danger">{{ count($stockBajo) }}</span>
+                                @endif
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="notificacionesDropdown"
+                                style="width: 300px;">
+                                @if (isset($stockBajo) && count($stockBajo) > 0)
+                                    <li class="dropdown-header">Stock bajo (menos de 20)</li>
+                                    @foreach ($stockBajo as $item)
+                                        <li>
+                                            <div class="dropdown-item text-wrap">
+                                                <strong>{{ ucfirst($item['tabla']) }}:</strong>
+                                                {{ $item['nombre'] }}<br>
+                                                <small>Cantidad: {{ $item['cantidad'] }}</small>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                @else
+                                    <li><span class="dropdown-item text-muted">Sin notificaciones</span></li>
+                                @endif
+                            </ul>
+                        </li>
 
 
 

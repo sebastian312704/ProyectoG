@@ -31,7 +31,8 @@ class AdminController extends Controller
 
     public function Ver_Pedido()
     {
-        return view('admin.V_Pedidos');
+        $datos = DB::select("select * from pedidos");
+        return view('admin.V_Pedidos')->with("datos", $datos);
     }
 
     public function Registrar_perfum_hombre()

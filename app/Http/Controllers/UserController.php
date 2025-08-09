@@ -17,12 +17,22 @@ class UserController extends Controller
 
      public function Pedido1()
     {
-        return view('user.R_Pedidos_U');
+        $datos = DB::select("
+        SELECT * FROM perfumes1
+        UNION
+        SELECT * FROM perfumes
+        UNION
+        SELECT * FROM perfumes2
+    ");
+
+    return view('user.R_Pedidos_U')->with("datos", $datos);
+    
     }
 
     public function Ver_Pedido1()
     {
-        return view('user.V_Pedidos_U');
+        $datos = DB::select("select * from pedidos");
+        return view('user.V_Pedidos_U')->with("datos", $datos);
     }
 
     //vista para ver los perfumes de hombre modo user

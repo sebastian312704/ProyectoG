@@ -332,32 +332,32 @@
                 </div>
 
                 <div class="p-5">
-                        <div class="row mb-3 align-items-end">
-                            <div class="col-md-4">
-                                <label for="filtroNombre" class="form-label">Filtrar por nombre</label>
-                                <input type="text" id="filtroNombre" class="form-control" placeholder="Ej: Dior">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
-                                <select id="filtroTipo" class="form-control">
-                                    <option value="">Todos</option>
-                                    <option value="Perfume">Perfume</option>
-                                    <option value="Perfumero">Perfumero</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="filtroFrasco" class="form-label">Filtrar por frasco (ml)</label>
-                                <select id="filtroFrasco" class="form-control">
-                                    <option value="">Todos</option>
-                                    <option value="50">50 ml</option>
-                                    <option value="100">100 ml</option>
-                                </select>
-                            </div>
-                            <div class="col-md-1">
-                                <button id="btnLimpiar" class="btn btn-secondary w-100">Limpiar</button>
-                            </div>
+                    <div class="row mb-3 align-items-end">
+                        <div class="col-md-4">
+                            <label for="filtroNombre" class="form-label">Filtrar por nombre</label>
+                            <input type="text" id="filtroNombre" class="form-control" placeholder="Ej: Dior">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
+                            <select id="filtroTipo" class="form-control">
+                                <option value="">Todos</option>
+                                <option value="Perfume">Perfume</option>
+                                <option value="Perfumero">Perfumero</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="filtroFrasco" class="form-label">Filtrar por frasco (ml)</label>
+                            <select id="filtroFrasco" class="form-control">
+                                <option value="">Todos</option>
+                                <option value="50">50 ml</option>
+                                <option value="100">100 ml</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <button id="btnLimpiar" class="btn btn-secondary w-100">Limpiar</button>
                         </div>
                     </div>
+                </div>
 
                 <div class="p-5 table-responsive">
 
@@ -389,8 +389,7 @@
                                     <td>
 
                                         <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#modalFechaCantidad" data-id="{{ $item->id }}"
-                                            data-fecha="{{ $item->fecha }}">
+                                            data-bs-target="#modalFechaCantidad{{ $item->id }}">
                                             <i class="fa-solid fa-plus"></i>
                                         </a>
 
@@ -406,7 +405,6 @@
                                         </a>
 
 
-
                                         <div id="modalConfirmacion" class="modal">
                                             <div class="modal-contenido moderno">
                                                 <h3>¿Estás seguro?</h3>
@@ -420,13 +418,16 @@
                                             </div>
                                         </div>
 
-                                        <div class="modal fade" id="modalFechaCantidad" tabindex="-1"
-                                            aria-labelledby="modalLabel" aria-hidden="true">
+                                        <!-- MODAL UNICO POR PERFUME -->
+                                        <div class="modal fade" id="modalFechaCantidad{{ $item->id }}"
+                                            tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}"
+                                            aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalLabel">ACTUALIZAR FECHA Y CANTIDAD</h5>
+                                                        <h5 class="modal-title" id="modalLabel{{ $item->id }}">
+                                                            ACTUALIZAR FECHA Y CANTIDAD</h5>
                                                         <button type="button" class="btn-close"
                                                             data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                                     </div>
@@ -436,13 +437,15 @@
                                                             method="POST">
                                                             @csrf
 
-                                                            <input type="hidden" name="txtcodigo" id="txtcodigo">
+                                                            <input type="hidden" name="txtcodigo"
+                                                                value="{{ $item->id }}">
 
                                                             <div class="mb-3">
-                                                                <label for="txtcantidad" class="form-label">Cantidad a
-                                                                    sumar</label>
+                                                                <label for="txtcantidad{{ $item->id }}"
+                                                                    class="form-label">Cantidad a sumar</label>
                                                                 <input type="number" class="form-control"
-                                                                    name="txtcantidad" id="txtcantidad" required>
+                                                                    name="txtcantidad"
+                                                                    id="txtcantidad{{ $item->id }}" required>
                                                                 @error('txtcantidad')
                                                                     <div class="text-danger small">{{ $message }}
                                                                     </div>
@@ -450,9 +453,11 @@
                                                             </div>
 
                                                             <div class="mb-3">
-                                                                <label for="txtfecha" class="form-label">Fecha</label>
+                                                                <label for="txtfecha{{ $item->id }}"
+                                                                    class="form-label">Fecha</label>
                                                                 <input type="date" class="form-control"
-                                                                    name="txtfecha" id="txtfecha" required>
+                                                                    name="txtfecha" id="txtfecha{{ $item->id }}"
+                                                                    required>
                                                                 @error('txtfecha')
                                                                     <div class="text-danger small">{{ $message }}
                                                                     </div>
@@ -473,23 +478,6 @@
                                             </div>
                                         </div>
 
-
-                                        <script>
-                                            document.addEventListener('DOMContentLoaded', () => {
-                                                var modal = document.getElementById('modalFechaCantidad');
-                                                modal.addEventListener('show.bs.modal', function(event) {
-                                                    var button = event.relatedTarget;
-                                                    var id = button.getAttribute('data-id');
-                                                    var cantidad = button.getAttribute('data-cantidad');
-                                                    var fecha = button.getAttribute('data-fecha');
-
-                                                    modal.querySelector('input[name="txtcodigo"]').value = id;
-                                                    modal.querySelector('input[name="txtcantidad"]').value = cantidad;
-                                                    modal.querySelector('input[name="txtfecha"]').value = fecha;
-                                                });
-                                            });
-                                        </script>
-
                                     </td>
                                 </tr>
                         </tbody>
@@ -500,7 +488,8 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">MODIFICAR DATOS DEL PERFUME</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">MODIFICAR DATOS DEL
+                                            PERFUME</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -647,43 +636,43 @@
                 </script>
 
                 <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const filtroNombre = document.getElementById('filtroNombre');
-                            const filtroTipo = document.getElementById('filtroTipo');
-                            const filtroFrasco = document.getElementById('filtroFrasco');
-                            const btnLimpiar = document.getElementById('btnLimpiar');
-                            const filas = document.querySelectorAll('tbody tr');
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const filtroNombre = document.getElementById('filtroNombre');
+                        const filtroTipo = document.getElementById('filtroTipo');
+                        const filtroFrasco = document.getElementById('filtroFrasco');
+                        const btnLimpiar = document.getElementById('btnLimpiar');
+                        const filas = document.querySelectorAll('tbody tr');
 
-                            function aplicarFiltro() {
-                                const nombre = filtroNombre.value.toLowerCase();
-                                const tipo = filtroTipo.value.toLowerCase();
-                                const frasco = filtroFrasco.value;
+                        function aplicarFiltro() {
+                            const nombre = filtroNombre.value.toLowerCase();
+                            const tipo = filtroTipo.value.toLowerCase();
+                            const frasco = filtroFrasco.value;
 
-                                filas.forEach(fila => {
-                                    const nombreTd = fila.children[1].textContent.toLowerCase();
-                                    const tipoTd = fila.children[3].textContent.toLowerCase();
-                                    const frascoTd = fila.children[4].textContent;
+                            filas.forEach(fila => {
+                                const nombreTd = fila.children[1].textContent.toLowerCase();
+                                const tipoTd = fila.children[3].textContent.toLowerCase();
+                                const frascoTd = fila.children[4].textContent;
 
-                                    const coincideNombre = nombreTd.includes(nombre);
-                                    const coincideTipo = tipo === '' || tipoTd === tipo;
-                                    const coincideFrasco = frasco === '' || frascoTd === frasco;
+                                const coincideNombre = nombreTd.includes(nombre);
+                                const coincideTipo = tipo === '' || tipoTd === tipo;
+                                const coincideFrasco = frasco === '' || frascoTd === frasco;
 
-                                    fila.style.display = (coincideNombre && coincideTipo && coincideFrasco) ? '' : 'none';
-                                });
-                            }
-
-                            filtroNombre.addEventListener('input', aplicarFiltro);
-                            filtroTipo.addEventListener('change', aplicarFiltro);
-                            filtroFrasco.addEventListener('change', aplicarFiltro);
-
-                            btnLimpiar.addEventListener('click', function() {
-                                filtroNombre.value = '';
-                                filtroTipo.value = '';
-                                filtroFrasco.value = '';
-                                aplicarFiltro();
+                                fila.style.display = (coincideNombre && coincideTipo && coincideFrasco) ? '' : 'none';
                             });
+                        }
+
+                        filtroNombre.addEventListener('input', aplicarFiltro);
+                        filtroTipo.addEventListener('change', aplicarFiltro);
+                        filtroFrasco.addEventListener('change', aplicarFiltro);
+
+                        btnLimpiar.addEventListener('click', function() {
+                            filtroNombre.value = '';
+                            filtroTipo.value = '';
+                            filtroFrasco.value = '';
+                            aplicarFiltro();
                         });
-                    </script>
+                    });
+                </script>
 
 </body>
 

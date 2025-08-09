@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>REGISTAR PERFUMES UNISEX</title>
+    <title>REGISTAR PEDIDOS</title>
 
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -375,143 +375,195 @@
                         </script>
                     @endif
 
-                    <div class="p-3">
-                        <div class="row mb-3 align-items-end">
-                            <div class="col-md-4">
-                                <label for="nombreCompleto" class="form-label">Nombre completo</label>
-                                <input type="text" id="nombreCompleto" class="form-control">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="celular" class="form-label">Celular</label>
-                                <input type="text" id="celular" class="form-control">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" id="direccion" class="form-control">
+                    <form method="POST" action="{{ route('registrar.pedido') }}">
+                        @csrf
+
+                        <!-- DATOS DEL CLIENTE -->
+                        <div class="p-3">
+                            <div class="row mb-3 align-items-end">
+                                <div class="col-md-4">
+                                    <label for="nombreCompleto" class="form-label">Nombre completo</label>
+                                    <input type="text" id="nombreCompleto" name="nombre_completo"
+                                        class="form-control" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="celular" class="form-label">Celular</label>
+                                    <input type="text" id="celular" name="celular" class="form-control"
+                                        required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="direccion" class="form-label">Dirección</label>
+                                    <input type="text" id="direccion" name="direccion" class="form-control"
+                                        required>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-
-                    <div class="pt-1 pb-1">
-                        <div class="row mb-3 align-items-end">
-                            <div class="col-md-4">
-                                <label for="filtroNombre" class="form-label">Filtrar por nombre</label>
-                                <input type="text" id="filtroNombre" class="form-control" placeholder="Ej: Dior">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
-                                <select id="filtroTipo" class="form-control">
-                                    <option value="">Todos</option>
-                                    <option value="Perfume">Perfume</option>
-                                    <option value="Perfumero">Perfumero</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="filtroFrasco" class="form-label">Filtrar por frasco (ml)</label>
-                                <select id="filtroFrasco" class="form-control">
-                                    <option value="">Todos</option>
-                                    <option value="50">50 ml</option>
-                                    <option value="100">100 ml</option>
-                                </select>
-                            </div>
-                            <div class="col-md-1">
-                                <button id="btnLimpiar" class="btn btn-primary">Limpiar</button>
+                        <!-- FILTRADO -->
+                        <div class="pt-1 pb-1">
+                            <div class="row mb-3 align-items-end">
+                                <div class="col-md-4">
+                                    <label for="filtroNombre" class="form-label">Filtrar por nombre</label>
+                                    <input type="text" id="filtroNombre" class="form-control"
+                                        placeholder="Ej: Dior">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
+                                    <select id="filtroTipo" class="form-control">
+                                        <option value="">Todos</option>
+                                        <option value="Perfume">Perfume</option>
+                                        <option value="Perfumero">Perfumero</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="filtroFrasco" class="form-label">Filtrar por frasco (ml)</label>
+                                    <select id="filtroFrasco" class="form-control">
+                                        <option value="">Todos</option>
+                                        <option value="50">50 ml</option>
+                                        <option value="100">100 ml</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <button id="btnLimpiar" type="button" class="btn btn-primary">Limpiar</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                        <!-- TABLA -->
+                        <style>
+                            .tabla-expandida th,
+                            .tabla-expandida td {
+                                white-space: nowrap;
+                                min-width: 120px;
+                                vertical-align: middle;
+                            }
+                        </style>
 
-                    <!-- Estilos para columnas más amplias -->
-                    <style>
-                        .tabla-expandida th,
-                        .tabla-expandida td {
-                            white-space: nowrap;
-                            min-width: 120px;
-                            vertical-align: middle;
-                        }
-                    </style>
+                        <div class="p-5" style="margin-left: -45px;">
+                            <button type="submit" class="btn btn-primary" style="margin-top: -10px;">
+                                Registrar Pedido
+                            </button>
 
-                    <!-- Contenedor con margen negativo para mover la tabla a la izquierda -->
-                    <div class="p-5" style="margin-left: -45px;">
-                        <button id="btnDetallesPedido" class="btn btn-primary" style="margin-top: -10px;">
-                            Detalles del pedido
-                        </button>
-                        <table class="table table-striped table-bordered table-hover tabla-expandida">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <th scope="col">CASA</th>
-                                    <th scope="col">NOMBRE</th>
-                                    <th scope="col">CANTIDAD</th>
-                                    <th scope="col">TIPO DE PERFUME</th>
-                                    <th scope="col">FRASCO EN ML</th>
-                                    <th scope="col">FECHA</th>
-                                    <th scope="col">HORA</th>
-                                    <th scope="col">SELECCIONAR</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                @foreach ($datos as $key => $item)
+                            <table class="table table-striped table-bordered table-hover tabla-expandida"
+                                id="tablaPerfumes">
+                                <thead class="bg-primary text-white">
                                     <tr>
-                                        <td>{{ $item->casa }}</td>
-                                        <td>{{ $item->nombre }}</td>
-                                        <td>{{ $item->cantidad }}</td>
-                                        <td>{{ $item->tipo_perfume }}</td>
-                                        <td>{{ $item->frasco_ml }}</td>
-                                        <td>{{ $item->fecha }}</td>
-                                        <td>{{ $item->hora }}</td>
-                                        <td>
-                                            <div style="display: flex; align-items: center; gap: 10px;">
-                                                <input type="checkbox" id="check_{{ $item->id }}"
-                                                    onchange="document.getElementById('cantidad_{{ $item->id }}').disabled = !this.checked">
-                                                <input type="number" id="cantidad_{{ $item->id }}"
-                                                    name="cantidades[{{ $item->id }}]" min="1"
-                                                    max="{{ $item->cantidad }}" disabled style="width: 60px;">
-                                            </div>
-                                        </td>
+                                        <th>CASA</th>
+                                        <th>NOMBRE</th>
+                                        <th>CANTIDAD</th>
+                                        <th>TIPO DE PERFUME</th>
+                                        <th>FRASCO EN ML</th>
+                                        <th>FECHA</th>
+                                        <th>HORA</th>
+                                        <th>SELECCIONAR</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    @foreach ($datos as $item)
+                                        <tr>
+                                            <td>{{ $item->casa }}</td>
+                                            <td>{{ $item->nombre }}</td>
+                                            <td>{{ $item->cantidad }}</td>
+                                            <td>{{ $item->tipo_perfume }}</td>
+                                            <td>{{ $item->frasco_ml }}</td>
+                                            <td>{{ $item->fecha }}</td>
+                                            <td>{{ $item->hora }}</td>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <input type="checkbox" name="seleccionados[]"
+                                                        value="{{ $item->id }}"
+                                                        onchange="habilitarCantidad(this)">
 
-                        <!-- Script para obtener datos seleccionados -->
-                        <script>
-                            document.getElementById('btnDetallesPedido').addEventListener('click', () => {
-                                const detalles = [];
-                                @foreach ($datos as $item)
-                                    const check = document.getElementById('check_{{ $item->id }}');
-                                    if (check && check.checked) {
-                                        const cantidadInput = document.getElementById('cantidad_{{ $item->id }}');
-                                        const cantidad = cantidadInput ? parseInt(cantidadInput.value) : 0;
-                                        if (cantidad > 0 && cantidad <= {{ $item->cantidad }}) {
-                                            detalles.push({
-                                                id: {{ $item->id }},
-                                                casa: "{{ $item->casa }}",
-                                                nombre: "{{ $item->nombre }}",
-                                                cantidad: cantidad,
-                                                tipo_perfume: "{{ $item->tipo_perfume }}",
-                                                frasco_ml: "{{ $item->frasco_ml }}",
-                                                fecha: "{{ $item->fecha }}",
-                                                hora: "{{ $item->hora }}"
-                                            });
-                                        }
-                                    }
-                                @endforeach
+                                                    <input type="number" id="cantidad_{{ $item->id }}"
+                                                        name="cantidades[{{ $item->id }}]" min="1"
+                                                        max="{{ $item->cantidad }}" oninput="validarCantidad(this)"
+                                                        disabled style="width: 60px;">
 
-                                if (detalles.length === 0) {
-                                    alert('No has seleccionado ningún perfume con cantidad válida.');
-                                    return;
+
+                                                    <!-- Campos ocultos necesarios para guardar el pedido -->
+                                                    <input type="hidden" name="data[{{ $item->id }}][casa]"
+                                                        value="{{ $item->casa }}">
+                                                    <input type="hidden" name="data[{{ $item->id }}][nombre]"
+                                                        value="{{ $item->nombre }}">
+                                                    <input type="hidden"
+                                                        name="data[{{ $item->id }}][tipo_perfume]"
+                                                        value="{{ $item->tipo_perfume }}">
+                                                    <input type="hidden" name="data[{{ $item->id }}][frasco_ml]"
+                                                        value="{{ $item->frasco_ml }}">
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                    <script>
+                        function habilitarCantidad(checkbox) {
+                            const fila = checkbox.closest('div'); // busca el contenedor del checkbox y el input
+                            const inputCantidad = fila.querySelector('input[type=number]');
+
+                            if (inputCantidad) {
+                                inputCantidad.disabled = !checkbox.checked;
+                                if (checkbox.checked) {
+                                    inputCantidad.focus(); // coloca el cursor si se marca
+                                } else {
+                                    inputCantidad.value = ''; // limpia si se desmarca
                                 }
+                            }
+                        }
+                    </script>
 
-                                let mensaje = "Detalles del pedido:\n\n";
-                                detalles.forEach(item => {
-                                    mensaje +=
-                                        `${item.nombre} - Cantidad: ${item.cantidad} - Tipo: ${item.tipo_perfume} - Frasco: ${item.frasco_ml}ml\n`;
-                                });
-                                alert(mensaje);
+                    <script>
+                        function validarCantidad(input) {
+                            const max = parseInt(input.max);
+                            const valor = parseInt(input.value);
+
+                            if (valor > max) {
+                                alert(`No puedes ingresar más de ${max} unidades. Esa es la cantidad disponible.`);
+                                input.value = ""; // Borra el valor incorrecto
+                            }
+                        }
+                    </script>
+
+
+
+                    <!-- JS para filtrado y limpieza -->
+                    <script>
+                        document.getElementById('btnLimpiar').addEventListener('click', () => {
+                            document.getElementById('filtroNombre').value = '';
+                            document.getElementById('filtroTipo').value = '';
+                            document.getElementById('filtroFrasco').value = '';
+                            filtrarTabla();
+                        });
+
+                        document.getElementById('filtroNombre').addEventListener('input', filtrarTabla);
+                        document.getElementById('filtroTipo').addEventListener('change', filtrarTabla);
+                        document.getElementById('filtroFrasco').addEventListener('change', filtrarTabla);
+
+                        function filtrarTabla() {
+                            const nombre = document.getElementById('filtroNombre').value.toLowerCase();
+                            const tipo = document.getElementById('filtroTipo').value;
+                            const frasco = document.getElementById('filtroFrasco').value;
+                            const filas = document.querySelectorAll('#tablaPerfumes tbody tr');
+
+                            filas.forEach(fila => {
+                                const tdNombre = fila.children[1].textContent.toLowerCase();
+                                const tdTipo = fila.children[3].textContent;
+                                const tdFrasco = fila.children[4].textContent;
+
+                                const mostrar =
+                                    (nombre === '' || tdNombre.includes(nombre)) &&
+                                    (tipo === '' || tdTipo === tipo) &&
+                                    (frasco === '' || tdFrasco === frasco);
+
+                                fila.style.display = mostrar ? '' : 'none';
                             });
-                        </script>
-                    </div>
+                        }
+                    </script>
+
 
 
                     <!-- Bootstrap core JavaScript-->

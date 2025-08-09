@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\NotificacionController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -60,6 +62,8 @@ route::get("/eliminar perfume unisex--{id}", [AdminController::class, "delete2"]
 route::get("/eliminar usuario--{id}", [AdminController::class, "deleteUsers"])->name("crud.deleteUsers");
 
 Route::post('/perfume/updateCantidadFecha', [AdminController::class, 'updateCantidadFecha'])->name('updateCantidadFecha');
+Route::post('/registrar-pedido', [PedidoController::class, 'store'])->name('registrar.pedido');
+
 
 
 
